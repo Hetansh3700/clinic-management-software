@@ -1,0 +1,36 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="details content">
+    <h2>Name: <%= app.name %></h2>
+    <div class="content">
+      <p>Description: <%= app.description %></p>
+      <p>Case: <%= app.casenumber %></p>
+      <p>Time: <%= app.time %></p>
+      <p>Date: <%= app.date %></p>
+      <p>Unique ID: <%= app._id %></p>
+    </div>
+    <a class="delete" data-doc="<%= app._id %>">delete</a>
+    <input type="file"/>
+  </div>
+
+  <%- include("./partials/footer.ejs") %>
+
+  <script>
+    const trashcan = document.querySelector('a.delete');
+    trashcan.addEventListener('click', (e) => {
+      const endpoint = `/appointments/${trashcan.dataset.doc}`;
+      fetch(endpoint, {
+        method: 'DELETE',
+      })
+      .then(response => response.json())
+      .then(data => window.location.href = data.redirect)
+      .catch(err => console.log(err));
+    });
+    
+  </script>
+</body>
+</html>

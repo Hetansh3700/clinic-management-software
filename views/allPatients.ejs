@@ -1,0 +1,45 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="appointments content">
+    <h2>All Appointments</h2>
+
+    <% if (apps.length > 0) { %>
+      <form class="search" action="/individual/search" method="get">
+        <input type="text" name="search" />
+        <input class="button "type="submit" value="submit"/>
+    </form>
+      <% apps.forEach(app => { %>
+        <a class="single" href="/appointments/<%= app._id %>">
+          <h3 class="title"><%= app.name %></h3>
+          <p class="snippet">Case: <%= app.casenumber %></p>
+          <p class="snippet">Date: <%= app.date %></p>
+          <p class="snippet">Time: <%= app.time %></p>
+        </a>
+      <% }) %>
+    <% } else { %>
+      <p>There are no appointments to display...</p>
+    <% } %>
+  </div>
+
+<script>
+  const trashcan = document.querySelector('input.button');
+  trashcan.addEventListener('click', (e) => {
+    var name = this.refs.patient.value;
+    console.log(name);
+    const endpoint = `/individual?search=${name}`;
+    fetch(endpoint, {
+      method: 'GET',
+    })
+    .then(response => response.json())
+    .then(data => window.location.href = data.redirect)
+    .catch(err => console.log(err));
+  });
+  
+</script>
+  <%- include("./partials/footer.ejs") %>
+</body>
+</html>
