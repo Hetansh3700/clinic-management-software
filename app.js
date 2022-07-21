@@ -3,6 +3,8 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const routes = require('./routes/routes');
 const individualRoutes = require('./routes/individualRoutes')
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json()
 
 //express app
 const app = express();

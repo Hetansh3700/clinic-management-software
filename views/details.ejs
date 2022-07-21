@@ -14,7 +14,7 @@
       <p>Unique ID: <%= app._id %></p>
     </div>
     <a class="delete" data-doc="<%= app._id %>">delete</a>
-    <input type="file"/>
+    <a class="edit" data-update=""="<%= app._id %>">update</a>
   </div>
 
   <%- include("./partials/footer.ejs") %>
@@ -28,6 +28,16 @@
       })
       .then(response => response.json())
       .then(data => window.location.href = data.redirect)
+      .catch(err => console.log(err));
+    });
+
+    const pencil = document.querySelector('a.edit');
+    pencil.addEventListener('click', (e) => {
+      const endpoint = `/appointments/update/${pencil.dataset.update}`;
+      fetch(endpoint, {
+        method: 'PATCH',
+      })
+      .then(() => {})
       .catch(err => console.log(err));
     });
     

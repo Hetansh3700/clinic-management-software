@@ -8,8 +8,8 @@
     <h2>All Appointments</h2>
 
     <% if (apps.length > 0) { %>
-      <form class="search" action="/individual/search" method="get">
-        <input type="text" name="search" />
+      <form class="search" action="/individual/search/" method="post">
+        <input type="text" name="name" />
         <input class="button "type="submit" value="submit"/>
     </form>
       <% apps.forEach(app => { %>

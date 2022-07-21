@@ -1,0 +1,25 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="update-appointment content">
+    <form action="/appointments/update" method="PUT">
+      <label for="name" >Name:</label>
+      <input type="text" id="name" defaultValue="<%= patient.name %>" name="name" required>
+      <label for="case">Case Number:</label>
+      <input type="text" id="number" defaultValue="<%= patient.casenumber %>" name="casenumber" required>
+      <label for="date">Date:</label>
+      <input type="date" id="date" defaultValue="<%= patient.date %>" name="date" required>
+      <label for="time">Time:</label>
+      <input type="time" id="time" defaultValue="<%= patient.time %>" name="time" required>
+      <label for="body">Description:</label>
+      <textarea type="text" id="body" defaultValue="<%= patient.description %>" name="description" required></textarea>
+      <button>Submit</button>
+    </form>
+  </div>
+
+  <%- include("./partials/footer.ejs") %>
+</body>
+</html>

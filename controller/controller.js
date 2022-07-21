@@ -1,3 +1,4 @@
+const { ObjectID } = require('bson');
 const { result } = require('lodash');
 const Doc = require('../model/appointment');
 
@@ -65,6 +66,19 @@ const appointment_search_get = (req, res) => {
     })
 
 };
+const appointment_update = (req, res) => {
+    const id = req.params.id;
+    const updates = req.body
+    console.log('hey');
+    Doc.findOneAndUpdate({_id : id}, {$set : updates})
+    .then(result => {
+        res.render('updateForm', {patient : result, title : 'Update Patient'});
+        // res.json({ redirect: '/create' });
+    })
+    .catch(err => {
+        console.log(err);
+    });
+};
 module.exports = {
     appointment_index,
     appointment_details,
@@ -72,5 +86,6 @@ module.exports = {
     appointment_create_post,
     appointment_delete,
     appointment_search,
-    appointment_search_get
+    appointment_search_get,
+    appointment_update
 }

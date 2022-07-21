@@ -12,12 +12,12 @@ const appointment_index = (req, res) => {
 
 
 const appointment_search_get = (req, res) => {
-    const name = req.body;
-    console.log(req.body);
+    const name = req.body.name;
+    // console.log(req.body);
     Doc.findOne({name: name})
     .then(result => {
         res.render('individual', { patient : result, title: 'Patient Details' });
-        console.log(result)
+        // console.log(result)
     })
     .catch(err => {
         ;console.log(err);
