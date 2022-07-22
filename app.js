@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const routes = require('./routes/routes');
 const individualRoutes = require('./routes/individualRoutes')
 const bodyParser = require('body-parser');
-const jsonParser = bodyParser.json()
+
 
 //express app
 const app = express();
@@ -18,6 +18,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // register view engine
 app.set('view engine', 'ejs');
+
 
 // middleware & static files
 app.use(express.static('public'));

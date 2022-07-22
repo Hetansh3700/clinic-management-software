@@ -8,5 +8,5 @@ router.get('/', controller.appointment_index);
 router.post('/', controller.appointment_create_post);
 router.get('/:id', controller.appointment_details);
 router.delete('/:id', controller.appointment_delete);
-router.patch('/update/:id', controller.appointment_update);
+
 module.exports = router;

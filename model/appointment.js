@@ -8,7 +8,7 @@ const appointmentSchema = new Schema({
     },
     casenumber : {
         type: Number,
-        required: true
+        required: false
     },
     date : {
         type : String,
@@ -17,6 +17,14 @@ const appointmentSchema = new Schema({
     time : {
         type: String,
         required: true
+    },
+    age : {
+        type : String,
+        required : true
+    },
+    phonenumber : {
+        type : String,
+        required : false
     },
     description : {
         type: String,

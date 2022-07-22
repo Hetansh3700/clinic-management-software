@@ -5,10 +5,10 @@ const Doc = require('../model/appointment');
 const appointment_index = (req, res) => {
     Doc.find().sort({ createdAt: -1 })
     .then(result => {
-    res.render('index', { apps: result, title: 'All appointments' });
+        res.render('index', { apps: result, title: 'All appointments' });
     })
     .catch(err => {
-    console.log(err);
+        console.log(err);
     });
 };
 
@@ -16,6 +16,7 @@ const appointment_details = (req, res) => {
     const id = req.params.id;
     Doc.findById(id)
     .then(result => {
+        console.log(result);
         res.render('details', { app: result, title: 'Appointment Details' });
     })
     .catch(err => {
@@ -50,42 +51,40 @@ const appointment_delete = (req, res) => {
     });
 };
 
-const appointment_search = (req, res) => {
-    res.render('search', { title: 'Search' });
-};
+// const appointment_search = (req, res) => {
+//     res.render('search', { title: 'Search' });
+// };
 
-const appointment_search_get = (req, res) => {
-    const name = req.params.names;
-    Doc.find({name: name})
-    .then(result => {
-        res.render('individual', { patient : result, title: 'Patient Details' });
-        console.log(result)
-    })
-    .catch(err => {
-        ;console.log(err);
-    })
+// const appointment_search_get = (req, res) => {
+//     const name = req.params.names;
+//     Doc.find({name: name})
+//     .then(result => {
+//         res.render('individual', { patient : result, title: 'Patient Details' });
+//         console.log(result)
+//     })
+//     .catch(err => {
+//         ;console.log(err);
+//     })
 
-};
-const appointment_update = (req, res) => {
-    const id = req.params.id;
-    const updates = req.body
-    console.log('hey');
-    Doc.findOneAndUpdate({_id : id}, {$set : updates})
-    .then(result => {
-        res.render('updateForm', {patient : result, title : 'Update Patient'});
-        // res.json({ redirect: '/create' });
-    })
-    .catch(err => {
-        console.log(err);
-    });
-};
+// };
+// const appointment_update = (req, res) => {
+//     const id = req.params.id;
+//     console.log('hey');
+//     Doc.findByIdAndUpdate(id, {name: "hp"})
+//     .then(result => {
+//         console.log(result);
+//         res.render('updateForm', { patient: result, title : 'Update Patient'});
+//         // res.json({ redirect: '/create' });
+//     })
+//     .catch(err => {
+//         console.log(err);
+//     });
+// };
 module.exports = {
     appointment_index,
     appointment_details,
     appointment_create_get,
     appointment_create_post,
     appointment_delete,
-    appointment_search,
-    appointment_search_get,
-    appointment_update
+
 }

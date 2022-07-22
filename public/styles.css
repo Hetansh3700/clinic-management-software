@@ -64,6 +64,13 @@
     .appointments a:hover h3{
       color: crimson;
     }
+    .appointments a{
+      display: flex;
+    }
+    .single p{
+      margin-top: 3px;
+      margin-left: 20px;
+    }
 
     /* details styles */
     .details{
@@ -85,8 +92,8 @@
     }
     .edit{
       position: absolute;
-      top: 100;
-      right:100;
+      top: 0;
+      right: 100;
       border-radius: 50%;
       padding: 8px;
     }
@@ -96,6 +103,15 @@
     }
 
     /* create styles */
+    .create-appointment button{
+      margin-top: 20px;
+      background: crimson;
+      color: white;
+      padding: 6px;
+      border: 0;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
     .create-appointment form{
       max-width: 400px;
       margin: 0 auto;
@@ -114,7 +130,34 @@
     textarea{
       height: 120px;
     }
-    .create-appointment button{
+    .update-appointment button{
+      margin-top: 20px;
+      background: crimson;
+      color: white;
+      padding: 6px;
+      border: 0;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+    .update-appointment form{
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .update-appointment input,
+    .update-appointment textarea{
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 8px;
+    }
+    .update-appointment label{
+      display: block;
+      margin-top: 24px;
+    }
+    textarea{
+      height: 120px;
+    }
+    .update-appointment button{
       margin-top: 20px;
       background: crimson;
       color: white;

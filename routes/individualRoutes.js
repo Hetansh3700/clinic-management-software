@@ -1,11 +1,11 @@
 const express = require('express');
 const controller = require('../controller/individualController');
-const bodyParser = require('body-parser');
-const jsonParser = bodyParser.json()
 const router = express.Router();
-const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 router.get('/', controller.appointment_index);
-router.post('/search', urlencodedParser, controller.appointment_search_get);
+router.get('/update/:id', controller.appointment_update);
+router.post('/search/', controller.appointment_search_get);
+router.post('/searchbyphone/', controller.appointment_searchbyphone_get);
+router.post('/update/:id', controller.appointment_update_post);
 
 module.exports = router;
