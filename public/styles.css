@@ -130,15 +130,6 @@
     textarea{
       height: 120px;
     }
-    .update-appointment button{
-      margin-top: 20px;
-      background: crimson;
-      color: white;
-      padding: 6px;
-      border: 0;
-      font-size: 1.2em;
-      cursor: pointer;
-    }
     .update-appointment form{
       max-width: 400px;
       margin: 0 auto;
